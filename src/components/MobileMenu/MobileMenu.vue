@@ -23,11 +23,16 @@ const menuOpened = ref(false);
       p-2
       rounded
       bg-orange-600
+      hover:bg-orange-500
       text-white
       font-semibold
     "
   >
-    menu
+    <font-awesome-icon
+        icon="fa-solid fa-burger"
+        class="fa-xl"
+        style="color: white"
+      />
   </button>
   <div
     id="mobileMenu"

@@ -15,16 +15,34 @@ onMounted(() => {
 </script>
 
 <template>
+  <!-- Add the style and icon you want using the String format -->
+
   <button @click="signOutUserFromFirebase" class="button-logout">
-    Wyloguj się
+    <div class="flex flex-col space-y-1 h-16 justify-center">
+      <font-awesome-icon
+        icon="fa-solid fa-right-from-bracket"
+        class="fa-xl"
+        style="color: white"
+      />
+      <h1>Wyloguj się</h1>
+    </div>
   </button>
 
   <button
     @click="() => (showOnlineUsers = !showOnlineUsers)"
     class="button-filter mt-2"
   >
-    {{ showOnlineUsers ? "Pokaż offline" : "Pokaż online" }}
+  <div class="flex flex-col space-y-1 h-16 justify-center">
+      <font-awesome-icon
+        icon="fa-solid fa-people-group"
+        class="fa-xl"
+        style="color: white"
+      />
+      <h1>{{ showOnlineUsers ? "Pokaż offline" : "Pokaż online" }}</h1>
+    </div>
+    
   </button>
+
   <div class="space-y-2 mt-2 mb-2 scroll-smooth overflow-y-auto">
     <div v-for="(user, index) in getUsersOnlineList.value" :key="index">
       <div
