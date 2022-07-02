@@ -8,7 +8,7 @@ const { signOutUserFromFirebase } = loginFunctions;
 const { getUsersOnlineList } = useUsersOnlineListStateAndFunctions();
 const { getUserEmail } = userStateAndFunctions;
 
-const menuOpened = ref(false);
+const menuOpened = ref(null);
 </script>
 
 <template>
@@ -17,8 +17,8 @@ const menuOpened = ref(false);
     class="
       z-20
       fixed
-      top-5
-      right-5
+      top-3
+      right-3
       lg:top-10 lg:right-10
       p-2
       rounded
@@ -29,10 +29,10 @@ const menuOpened = ref(false);
     "
   >
     <font-awesome-icon
-        icon="fa-solid fa-burger"
-        class="fa-xl"
-        style="color: white"
-      />
+      icon="fa-solid fa-burger"
+      class="fa-xl"
+      style="color: white"
+    />
   </button>
   <div
     id="mobileMenu"
@@ -71,12 +71,25 @@ const menuOpened = ref(false);
         >
           <h1 class="text-white font-semibold">24</h1>
         </div>
-        Prywatne wiadomości
+        <font-awesome-icon
+          icon="fa-solid fa-envelope"
+          class="fa-2xl"
+          style="color: black"
+        />
+        <h1>Prywatne wiadomości</h1>
       </button>
-      <button @click="signOutUserFromFirebase" class="menu-button">
-        Pokoje rozmów
+      <button @click="signOutUserFromFirebase" class="menu-button space-y-2">
+        <font-awesome-icon
+          icon="fa-solid fa-chalkboard-user"
+          class="fa-2xl"
+          style="color: black"
+        />
+        <h1>Pokoje rozmów</h1>
       </button>
-      <button @click="signOutUserFromFirebase" class="menu-button relative">
+      <button
+        @click="signOutUserFromFirebase"
+        class="menu-button relative space-y-2"
+      >
         <div
           class="absolute -top-2 -right-2 bg-orange-500 rounded-full px-3 py-1"
         >
@@ -84,17 +97,37 @@ const menuOpened = ref(false);
             {{ getUsersOnlineList.value.length }}
           </h1>
         </div>
-        Użytkownicy online
+        <font-awesome-icon
+          icon="fa-solid fa-users"
+          class="fa-2xl"
+          style="color: black"
+        />
+        <h1>Użytkownicy online</h1>
       </button>
-      <button @click="signOutUserFromFirebase" class="menu-button">
-        Profil
+      <button @click="signOutUserFromFirebase" class="menu-button space-y-2">
+        <font-awesome-icon
+          icon="fa-solid fa-address-card"
+          class="fa-2xl"
+          style="color: black"
+        />
+        <h1>Profil</h1>
       </button>
-      <button @click="signOutUserFromFirebase" class="menu-button">
-        Ustawienia
+      <button @click="signOutUserFromFirebase" class="menu-button space-y-2">
+        <font-awesome-icon
+          icon="fa-solid fa-gear"
+          class="fa-2xl"
+          style="color: black"
+        />
+        <h1>Ustawienia</h1>
       </button>
 
-      <button @click="signOutUserFromFirebase" class="menu-button">
-        Wyloguj się
+      <button @click="signOutUserFromFirebase" class="menu-button space-y-2">
+        <font-awesome-icon
+          icon="fa-solid fa-right-from-bracket"
+          class="fa-2xl"
+          style="color: black"
+        />
+        <h1>Wyloguj się</h1>
       </button>
     </div>
   </div>

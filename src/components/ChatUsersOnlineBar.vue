@@ -32,7 +32,7 @@ onMounted(() => {
     @click="() => (showOnlineUsers = !showOnlineUsers)"
     class="button-filter mt-2"
   >
-  <div class="flex flex-col space-y-1 h-16 justify-center">
+    <div class="flex flex-col space-y-1 h-16 justify-center">
       <font-awesome-icon
         icon="fa-solid fa-people-group"
         class="fa-xl"
@@ -40,7 +40,6 @@ onMounted(() => {
       />
       <h1>{{ showOnlineUsers ? "Pokaż offline" : "Pokaż online" }}</h1>
     </div>
-    
   </button>
 
   <div class="space-y-2 mt-2 mb-2 scroll-smooth overflow-y-auto">
@@ -49,7 +48,14 @@ onMounted(() => {
         v-if="user.online === showOnlineUsers"
         class="bg-white rounded shadow py-1 px-2 font-light h-20 w-full"
       >
-        <h1 class="font-semibold">{{ user.name }}</h1>
+        <div class="flex flex-row items-center space-x-2">
+          <font-awesome-icon
+            icon="fa-solid fa-user"
+            class="fa-sm"
+            style="color: black"
+          />
+          <h1 class="font-semibold">{{ user.name }}</h1>
+        </div>
         <h1 v-if="user.online" class="text-green-900 font-semibold">online</h1>
         <div v-else>
           <h1 class="text-sm">Last seen: {{ user.lastLoginDate }}</h1>
