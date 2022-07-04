@@ -61,7 +61,7 @@ function setAccountCreationInProgress(isCreatingAccount) {
 }
 
 function createUserNameForAnonymousLogin() {
-  const name = `Gosc - ${state.id.substring(0, 5)}`;
+  const name = `Gosc_${state.id.substring(0, 5)}`;
   return name;
 }
 
