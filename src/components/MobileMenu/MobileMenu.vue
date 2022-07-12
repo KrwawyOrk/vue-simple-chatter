@@ -1,17 +1,24 @@
 <script setup>
-import { ref } from "vue";
+import { ref, Teleport } from "vue";
 import loginFunctions from "../../functions/loginFunctions.js";
 import useUsersOnlineListStateAndFunctions from "../../functions/useUsersOnlineListStateAndFunctions.js";
 import userStateAndFunctions from "../../functions/userStateAndFunctions.js";
+
+import AccountProfile from "./pages/AccountProfile.vue";
 
 const { signOutUserFromFirebase } = loginFunctions;
 const { getUsersOnlineList } = useUsersOnlineListStateAndFunctions();
 const { getUserEmail } = userStateAndFunctions;
 
 const menuOpened = ref(null);
+const menuState = ref("mainMenu");
 </script>
 
 <template>
+  <Teleport to="body">
+    <AccountProfile v-if="menuState === 'accountProfile'" @clicked-returnToMobileMenu="menuState = 'mainMenu'"/>
+  </Teleport>
+
   <button
     @click="() => (menuOpened = !menuOpened)"
     class="
@@ -104,7 +111,7 @@ const menuOpened = ref(null);
         />
         <h1>Użytkownicy online</h1>
       </button>
-      <button @click="signOutUserFromFirebase" class="menu-button space-y-2">
+      <button @click="menuState = 'accountProfile'" class="menu-button space-y-2">
         <font-awesome-icon
           icon="fa-solid fa-address-card"
           class="fa-2xl"
