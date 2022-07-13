@@ -1,26 +1,18 @@
 <script setup>
-import { ref, Teleport } from "vue";
+import { ref } from "vue";
 import loginFunctions from "../../functions/loginFunctions.js";
 import useUsersOnlineListStateAndFunctions from "../../functions/useUsersOnlineListStateAndFunctions.js";
 import userStateAndFunctions from "../../functions/userStateAndFunctions.js";
+import useMobileMenuState from "./useMobileMenuState.js";
 
 import AccountProfile from "./pages/AccountProfile.vue";
 
 const { signOutUserFromFirebase } = loginFunctions;
 const { getUsersOnlineList } = useUsersOnlineListStateAndFunctions();
 const { getUserEmail } = userStateAndFunctions;
-
-const MOBILEMENU_STATE = {
-  MAINMENU: 0,
-  PRIVATE_MESSAGES: 1,
-  CHAT_ROOMS: 2,
-  USERS_ONLINE: 3,
-  ACCOUNT_PROFILE: 4,
-  SETTINGS: 5,
-};
+const { MOBILEMENU_STATE, menuState } = useMobileMenuState();
 
 const menuOpened = ref(null);
-const menuState = ref(MOBILEMENU_STATE.MAINMENU);
 </script>
 
 <template>
