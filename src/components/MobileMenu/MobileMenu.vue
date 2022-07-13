@@ -10,13 +10,25 @@ const { signOutUserFromFirebase } = loginFunctions;
 const { getUsersOnlineList } = useUsersOnlineListStateAndFunctions();
 const { getUserEmail } = userStateAndFunctions;
 
+const MOBILEMENU_STATE = {
+  MAINMENU: 0,
+  PRIVATE_MESSAGES: 1,
+  CHAT_ROOMS: 2,
+  USERS_ONLINE: 3,
+  ACCOUNT_PROFILE: 4,
+  SETTINGS: 5,
+};
+
 const menuOpened = ref(null);
-const menuState = ref("mainMenu");
+const menuState = ref(MOBILEMENU_STATE.MAINMENU);
 </script>
 
 <template>
   <Teleport to="body">
-    <AccountProfile v-if="menuState === 'accountProfile'" @clicked-returnToMobileMenu="menuState = 'mainMenu'"/>
+    <AccountProfile
+      v-if="menuState === MOBILEMENU_STATE.ACCOUNT_PROFILE"
+      @clicked-returnToMobileMenu="menuState = MOBILEMENU_STATE.MAINMENU"
+    />
   </Teleport>
 
   <button
@@ -29,6 +41,7 @@ const menuState = ref("mainMenu");
       lg:top-10 lg:right-10
       p-2
       rounded
+      shadow
       bg-orange-600
       hover:bg-orange-500
       text-white
@@ -111,7 +124,10 @@ const menuState = ref("mainMenu");
         />
         <h1>Użytkownicy online</h1>
       </button>
-      <button @click="menuState = 'accountProfile'" class="menu-button space-y-2">
+      <button
+        @click="menuState = MOBILEMENU_STATE.ACCOUNT_PROFILE"
+        class="menu-button space-y-2"
+      >
         <font-awesome-icon
           icon="fa-solid fa-address-card"
           class="fa-2xl"
