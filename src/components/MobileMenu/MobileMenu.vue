@@ -10,7 +10,7 @@ import AccountProfile from "./pages/AccountProfile.vue";
 const { signOutUserFromFirebase } = loginFunctions;
 const { getUsersOnlineList } = useUsersOnlineListStateAndFunctions();
 const { getUserEmail } = userStateAndFunctions;
-const { MOBILEMENU_STATE, menuState } = useMobileMenuState();
+const { MOBILEMENU_STATE, getMenuState, setMenuState } = useMobileMenuState();
 
 const menuOpened = ref(null);
 </script>
@@ -18,8 +18,8 @@ const menuOpened = ref(null);
 <template>
   <Teleport to="body">
     <AccountProfile
-      v-if="menuState === MOBILEMENU_STATE.ACCOUNT_PROFILE"
-      @clicked-returnToMobileMenu="menuState = MOBILEMENU_STATE.MAINMENU"
+      v-if="getMenuState.value === MOBILEMENU_STATE.ACCOUNT_PROFILE"
+      @clicked-returnToMobileMenu="setMenuState(MOBILEMENU_STATE.MAINMENU)"
     />
   </Teleport>
 
@@ -117,7 +117,7 @@ const menuOpened = ref(null);
         <h1>Użytkownicy online</h1>
       </button>
       <button
-        @click="menuState = MOBILEMENU_STATE.ACCOUNT_PROFILE"
+        @click="setMenuState(MOBILEMENU_STATE.ACCOUNT_PROFILE)"
         class="menu-button space-y-2"
       >
         <font-awesome-icon

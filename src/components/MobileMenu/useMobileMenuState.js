@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 function useMobileMenuState() {
   const MOBILEMENU_STATE = {
@@ -11,8 +11,10 @@ function useMobileMenuState() {
   };
 
   const menuState = ref(MOBILEMENU_STATE.MAINMENU);
+  const getMenuState = computed(() => menuState);
+  const setMenuState = (state) => (menuState.value = state);
 
-  return { MOBILEMENU_STATE, menuState };
+  return { MOBILEMENU_STATE, getMenuState, setMenuState };
 }
 
 export default useMobileMenuState;
