@@ -13,24 +13,24 @@ import {
   faBurger,
   faPeopleGroup,
   faRightFromBracket,
-  faChalkboardUser,
+  faAtom,
   faUser,
   faGear,
-  faEnvelope,
+  faHouse,
   faAddressCard,
-  faUsers,
+  faDice,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faRightFromBracket,
   faPeopleGroup,
   faBurger,
-  faChalkboardUser,
+  faAtom,
   faUser,
   faGear,
-  faEnvelope,
+  faHouse,
   faAddressCard,
-  faUsers
+  faDice
 );
 
 createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");

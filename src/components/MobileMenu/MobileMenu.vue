@@ -7,6 +7,10 @@ import useMobileMenuState from "./useMobileMenuState.js";
 
 import AccountProfile from "./pages/AccountProfile.vue";
 
+defineProps({
+  changeChatRoom: Function,
+});
+
 const { signOutUserFromFirebase } = loginFunctions;
 const { getUsersOnlineList } = useUsersOnlineListStateAndFunctions();
 const { getUserEmail } = userStateAndFunctions;
@@ -77,44 +81,48 @@ const menuOpened = ref(null);
         max-h-screen
       "
     >
-      <button @click="signOutUserFromFirebase" class="menu-button relative">
-        <div
-          class="absolute -top-2 -right-2 bg-orange-500 rounded-full px-2 py-1"
-        >
-          <h1 class="text-white font-semibold">24</h1>
-        </div>
+      <button
+        @click="
+          () => {
+            changeChatRoom('chats');
+            menuOpened = false;
+          }
+        "
+        class="menu-button relative"
+      >
         <font-awesome-icon
-          icon="fa-solid fa-envelope"
+          icon="fa-solid fa-house"
           class="fa-2xl"
           style="color: black"
         />
-        <h1>Prywatne wiadomości</h1>
-      </button>
-      <button @click="signOutUserFromFirebase" class="menu-button space-y-2">
-        <font-awesome-icon
-          icon="fa-solid fa-chalkboard-user"
-          class="fa-2xl"
-          style="color: black"
-        />
-        <h1>Pokoje rozmów</h1>
+        <h1>Główny pokój</h1>
       </button>
       <button
-        @click="signOutUserFromFirebase"
-        class="menu-button relative space-y-2"
+        @click="
+          () => {
+            changeChatRoom('programming');
+            menuOpened = false;
+          }
+        "
+        class="menu-button space-y-2"
       >
-        <div
-          class="absolute -top-2 -right-2 bg-orange-500 rounded-full px-3 py-1"
-        >
-          <h1 class="text-white font-semibold">
-            {{ getUsersOnlineList.value.length }}
-          </h1>
-        </div>
         <font-awesome-icon
-          icon="fa-solid fa-users"
+          icon="fa-solid fa-atom"
           class="fa-2xl"
           style="color: black"
         />
-        <h1>Użytkownicy online</h1>
+        <h1>Programowanie</h1>
+      </button>
+      <button
+        @click="() => { changeChatRoom('games'); menuOpened = false; }"
+        class="menu-button relative space-y-2"
+      >
+        <font-awesome-icon
+          icon="fa-solid fa-dice"
+          class="fa-2xl"
+          style="color: black"
+        />
+        <h1>Gry komputerowe</h1>
       </button>
       <button
         @click="setMenuState(MOBILEMENU_STATE.ACCOUNT_PROFILE)"

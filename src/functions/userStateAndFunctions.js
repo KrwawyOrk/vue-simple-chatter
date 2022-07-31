@@ -32,7 +32,7 @@ function setUser(firebaseAuthUser) {
     ? (state.email = createUserNameForAnonymousLogin())
     : (state.email = email);
 
-  state.isUserLoggedIn = true;
+  (state.chatRoomName = "chats"), (state.isUserLoggedIn = true);
   state.isUserAnonymous = isAnonymous;
 
   setUserStatusOnline(true);
@@ -47,7 +47,7 @@ function removeUser() {
     state.id = "";
     state.name = "";
     state.email = "";
-    state.isUserLoggedIn = false;
+    (state.chatRoomName = ""), (state.isUserLoggedIn = false);
     state.isAccountCreationInProgress = false;
   }
 }

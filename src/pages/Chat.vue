@@ -1,18 +1,25 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 import ChatUsersOnlineBar from "../components/ChatUsersOnlineBar.vue";
 import ChatMessages from "../components/ChatMessages.vue";
 import MobileMenu from "../components/MobileMenu/MobileMenu.vue";
 
-import userStateAndFunctions from "../functions/useChatStateAndFunctions.js";
-
+const componentKey = ref(0);
 const selectedChatRoom = ref("chats");
 
+const changeChatRoom = (room) => {
+  selectedChatRoom.value = room;
+  forceRerender();
+};
+
+const forceRerender = () => {
+  componentKey.value += 1;
+};
 </script>
 
 <template>
-  <MobileMenu />
+  <MobileMenu :changeChatRoom="changeChatRoom" />
   <div
     class="
       w-full
@@ -29,7 +36,7 @@ const selectedChatRoom = ref("chats");
     <div class="hidden md:flex w-48 md:flex-col justify-start">
       <ChatUsersOnlineBar />
     </div>
-    <ChatMessages :chatRoomName="selectedChatRoom" />
+    <ChatMessages :key="componentKey" :chatRoomName="selectedChatRoom" />
   </div>
 </template>
 

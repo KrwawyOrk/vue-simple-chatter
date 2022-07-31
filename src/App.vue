@@ -8,7 +8,7 @@ import userStateAndFunctions from "./functions/userStateAndFunctions.js";
 import Login from "./pages/Login.vue";
 import Chat from "./pages/Chat.vue";
 
-const { isUserLoggedIn } = userStateAndFunctions;
+const { isUserLoggedIn, getUserEmail } = userStateAndFunctions;
 
 onMounted(() => {
   checkAuthorisationStateChange();
