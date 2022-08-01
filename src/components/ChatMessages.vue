@@ -99,7 +99,7 @@ const clearInputMessage = () => {
 
 <style>
 .message-input {
-  @apply rounded-lg p-2 text-center border h-10 my-2;
+  @apply rounded-lg p-2 border h-10 my-2;
   @apply text-slate-700 font-semibold;
   @apply focus:outline-none focus:border-slate-400 placeholder-shown:text-sm;
 }

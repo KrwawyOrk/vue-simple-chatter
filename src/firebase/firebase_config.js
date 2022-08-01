@@ -3,14 +3,13 @@ import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APP_FIREBASEKEY,
-  authDomain: "vue-firebase-chatter.firebaseapp.com",
-  databaseURL:
-    "https://vue-firebase-chatter-default-rtdb.europe-west1.firebasedatabase.app/",
-  projectId: "vue-firebase-chatter",
-  storageBucket: "vue-firebase-chatter.appspot.com",
-  messagingSenderId: "821315837688",
-  appId: "1:821315837688:web:3780afdcd9e6925069650d",
-  measurementId: "G-6W79E1FE1N",
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  databaseURL: import.meta.env.VITE_DATABASEURL,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
+  measurementId: import.meta.env.VITE_MEASUREMENTID,
 };
 
 const app = initializeApp(firebaseConfig);
