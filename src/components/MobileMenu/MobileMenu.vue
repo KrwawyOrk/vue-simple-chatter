@@ -114,7 +114,12 @@ const menuOpened = ref(null);
         <h1>Programowanie</h1>
       </button>
       <button
-        @click="() => { changeChatRoom('games'); menuOpened = false; }"
+        @click="
+          () => {
+            changeChatRoom('games');
+            menuOpened = false;
+          }
+        "
         class="menu-button relative space-y-2"
       >
         <font-awesome-icon

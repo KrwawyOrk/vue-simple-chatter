@@ -31,6 +31,10 @@ function useChatStateAndFunctions(chatRoomName) {
   };
 
   const sendMessageToChat = (userName, message) => {
+    if (!checkTheLengthOfMessage()) {
+      return;
+    }
+
     const db = getDatabase();
     const chatRef = ref(db, chatRoomName);
     const newMessage = pushKey(chatRef);
@@ -39,6 +43,10 @@ function useChatStateAndFunctions(chatRoomName) {
       author: userName,
       body: message,
     });
+  };
+
+  const checkTheLengthOfMessage = (message) => {
+    return message.length <= 50;
   };
 
   const scrollDownAfterAppendMessage = () => {
