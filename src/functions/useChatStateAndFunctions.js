@@ -31,10 +31,6 @@ function useChatStateAndFunctions(chatRoomName) {
   };
 
   const sendMessageToChat = (userName, message) => {
-    if (!checkTheLengthOfMessage()) {
-      return;
-    }
-
     const db = getDatabase();
     const chatRef = ref(db, chatRoomName);
     const newMessage = pushKey(chatRef);
@@ -45,8 +41,12 @@ function useChatStateAndFunctions(chatRoomName) {
     });
   };
 
-  const checkTheLengthOfMessage = (message) => {
-    return message.length <= 50;
+  const sendErrorMessageToChat = (message) => {
+    chatMessages.value.push({
+      key: Date.now() + Math.random(),
+      author: "Vue Firebase Chatter",
+      body: message,
+    });
   };
 
   const scrollDownAfterAppendMessage = () => {
@@ -62,6 +62,7 @@ function useChatStateAndFunctions(chatRoomName) {
     getChatMessages,
     getChatRoomName,
     sendMessageToChat,
+    sendErrorMessageToChat,
     onChatMessagesUpdate,
   };
 }

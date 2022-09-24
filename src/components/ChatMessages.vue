@@ -11,6 +11,7 @@ const {
   getChatMessages,
   getChatRoomName,
   sendMessageToChat,
+  sendErrorMessageToChat,
   onChatMessagesUpdate,
 } = useChatStateAndFunctions(props.chatRoomName);
 
@@ -26,6 +27,10 @@ const send = () => {
   if (inputMessage.value.length > 0 && inputMessage.value.length <= 100) {
     sendMessageToChat(getUserEmail.value, inputMessage.value);
     clearInputMessage();
+  }
+
+  else {
+    sendErrorMessageToChat("Twoja wiadomosc nie moze byc dluzsza niz 100 znakow!");
   }
 };
 
