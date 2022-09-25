@@ -22,6 +22,7 @@ defineProps({
         text-slate-800
         font-light
       "
+      :class="sender === 'Vue Firebase Chatter' ? 'text-red-900 font-medium' : ''"
     >
       {{ message }}
     </h1>

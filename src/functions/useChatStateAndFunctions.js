@@ -47,6 +47,8 @@ function useChatStateAndFunctions(chatRoomName) {
       author: "Vue Firebase Chatter",
       body: message,
     });
+
+    nextTick(() => scrollDownAfterAppendMessage());
   };
 
   const scrollDownAfterAppendMessage = () => {
