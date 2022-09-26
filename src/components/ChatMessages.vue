@@ -91,6 +91,7 @@ const clearInputMessage = () => {
       <div class="flex flex-col md:flex-row items-center justify-center">
         <input
           v-model="inputMessage"
+          @keyup.enter="send"
           class="message-input w-full"
           placeholder="Wpisz coś... bo nic się nie dzieje :("
         />
