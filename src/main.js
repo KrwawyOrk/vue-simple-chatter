@@ -19,6 +19,7 @@ import {
   faHouse,
   faAddressCard,
   faDice,
+  faShare,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -30,7 +31,8 @@ library.add(
   faGear,
   faHouse,
   faAddressCard,
-  faDice
+  faDice,
+  faShare,
 );
 
 createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");

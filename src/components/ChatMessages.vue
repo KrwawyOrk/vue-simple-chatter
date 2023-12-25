@@ -95,8 +95,9 @@ const clearInputMessage = () => {
           class="message-input w-full"
           placeholder="Wpisz coś... bo nic się nie dzieje :("
         />
-        <button @click="send" class="button-send-message w-full md:w-min">
-          Wyślij
+        <button @click="send" class="button-send-message flex flex-row w-full md:w-min space-x-2 items-center justify-center">
+          <h1>Wyślij</h1>
+          <font-awesome-icon icon="fa-solid fa-share" />
         </button>
       </div>
     </div>
